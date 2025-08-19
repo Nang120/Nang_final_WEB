@@ -1,0 +1,95 @@
+@import url("https://fonts.googleapis.com/css2?family=Edu+NSW+ACT+Cursive:wght@400..700&display=swap");
+.cart-card {
+  background-color: rgb(165, 164, 164);
+  border: 1px;
+  border-radius: 30px;
+  box-shadow: 0 4px 12px rgba(255, 238, 238, 0.05);
+  margin-bottom: 20px;
+  transition: transform 0.2s ease;
+}
+
+.cart-img {
+  width: 100px;
+  border-radius: 12px;
+}
+.remove-btn {
+  background-color: red;
+  padding: 15px;
+
+  border: 1px;
+  border-radius: 5%;
+  width: 200px;
+  color: #ffffff;
+  cursor: pointer;
+  font-weight: bold;
+}
+.remove-btn:hover {
+  transition: 0.5s;
+  background-color: rgb(140, 39, 39);
+}
+.total-box {
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+  padding: 20px;
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+.qty {
+  display: flex;
+  gap: 20px;
+}
+.col-md-2 input {
+  width: 30px;
+  height: 20px;
+}
+.invoice-popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+
+.invoice-popup.show {
+  display: flex;
+}
+
+.invoice-content {
+  background: white;
+  padding: 50px;
+  border-radius: 10px;
+  max-width: 500px;
+  width: 90%;
+}
+
+.invoice-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 5px 0;
+  border-bottom: 1px solid #ccc;
+}
+.btn-add {
+  background-color: rgb(255, 255, 255);
+  width: 50px;
+  border-radius: 15px;
+}
+.btn-add:hover {
+  transition: 0.5s;
+  background-color: green;
+  border-color: rgb(0, 0, 0);
+}
+.btn-minute {
+  background-color: rgb(255, 255, 255);
+  width: 50px;
+  border-radius: 15px;
+}
+.btn-minute:hover {
+  transition: 0.5s;
+  background-color: rgb(255, 0, 0);
+  border-color: rgb(0, 0, 0);
+}

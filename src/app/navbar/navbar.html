@@ -1,0 +1,61 @@
+<nav
+  class="navbar navbar-expand-lg navbar-light"
+  style="background-color: rgb(213, 213, 213)"
+>
+  <a
+    class="navbar-brand"
+    style="width: 30%; font-size: 30px; font-family: Edu NSW ACT Cursive"
+    href="#"
+    >XEN'SHOP</a
+  >
+  <button
+    class="navbar-toggler"
+    type="button"
+    data-toggle="collapse"
+    data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent"
+    aria-expanded="false"
+    aria-label="Toggle navigation"
+  >
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="#"
+          >HOME <span class="sr-only">(current)</span></a
+        >
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">ABOUT</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/contact" routerLinkActive="active"
+          >CONTACT</a
+        >
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" routerLink="pgae-product">PRODUCT</a>
+      </li>
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <input
+        style="border-radius: 30px; border-color: rgb(88, 88, 88); width: 400px"
+        class="form-control mr-sm-2"
+        type="search"
+        placeholder="Search"
+        aria-label="Search"
+      />
+      <a
+        style="border-radius: 10px"
+        routerlink="/cart"
+        class="btn btn-outline-success my-2 my-sm-0"
+        type="submit"
+        routerLink="/cart"
+        >+ CARD {{ cartService.GetCartItems().length }}</a
+      >
+    </form>
+  </div>
+</nav>

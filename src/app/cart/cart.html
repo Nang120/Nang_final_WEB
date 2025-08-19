@@ -1,0 +1,119 @@
+<div class="container py-5">
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+  <a href=""><img style="width: 200px" src="OIP.jpg" alt="" /></a><br /><br />
+  <h2 class="mb-4 text-center" style="font-size: 50px">MY SHOPPING CART</h2>
+  <br />
+
+  @for( item of cartService.GetCartItems(); track item.id){
+  <div class="card cart-card p-3">
+    <div class="row align-items-center">
+      <div class="col-md-2 text-center">
+        <input
+          type="checkbox"
+          [(ngModel)]="item.is_selected"
+          (change)="updateTotal()"
+        />
+        <img [src]="item.image" class="cart-img" alt="{{ item.title }}" />
+      </div>
+      <div class="col-md-6">
+        <h5 class="mb-1">{{ item.title }}</h5>
+        <br />
+        <div class="qty">
+          <button
+            class="btn-minute"
+            (click)="
+              item.qty > 1 && cartService.UpdateQty(item, item.qty - 1);
+              updateTotal()
+            "
+          >
+            -
+          </button>
+          <p style="color: white" class="mb-0 text-muted">
+            Quantity : {{ item.qty }}
+          </p>
+          <button
+            class="btn-add"
+            (click)="cartService.UpdateQty(item, item.qty + 1); updateTotal()"
+          >
+            +
+          </button>
+        </div>
+      </div>
+      <div class="col-md-2 text-right">
+        <h6>${{ item.price * item.qty | currency }}</h6>
+      </div>
+      <div class="col-md-2 text-right">
+        <span class="remove-btn" (click)="cartService.RemoveFromCart(item.id)"
+          >Remove</span
+        >
+      </div>
+    </div>
+  </div>
+  }
+
+  <div class="total-box mt-4 text-right">
+    Total:
+    <span class="text-primary"
+      >${{ cartService.getTotalSelected() | currency }}</span
+    >
+  </div>
+  <br /><br /><br />
+  <button
+    class="total-box text-right"
+    (click)="openInvoice()"
+    style="
+      border-radius: 30;
+      background-color: rgb(0, 196, 0);
+      color: white;
+      border: none;
+    "
+  >
+    Payment
+  </button>
+</div>
+
+<div class="invoice-popup" [class.show]="showInvoice">
+  <div class="invoice-content">
+    <h2 align="center">INVOICE</h2>
+    <br />
+    <div *ngFor="let item of selectedItems">
+      <div class="invoice-item">
+        <span>{{ item.title }}</span>
+        <span>Qty: {{ item.qty }}</span>
+        <span>Price: ${{ item.price }}</span>
+        <span>Total: ${{ item.price * item.qty }}</span>
+      </div>
+    </div>
+    <br />
+    <h3>Grand Total: ${{ invoiceTotal }}</h3>
+    <br />
+    <button
+      style="
+        padding: 10px;
+        border-radius: 10px;
+        border: none;
+        background-color: rgb(217, 0, 0);
+        color: white;
+      "
+      (click)="closeInvoice()"
+    >
+      Close</button
+    >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <button
+      style="
+        color: white;
+        padding: 10px;
+        border-radius: 10px;
+        border: none;
+        background-color: rgb(20, 148, 20);
+      "
+      (click)="closeInvoice()"
+    >
+      Payment
+    </button>
+  </div>
+</div>

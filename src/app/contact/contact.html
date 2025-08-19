@@ -1,0 +1,192 @@
+<head>
+  <meta charset="utf-8" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, shrink-to-fit=no"
+  />
+  <title>Contact Us</title>
+
+  <link
+    rel="stylesheet"
+    href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+  />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+  />
+</head>
+<body>
+  <section class="container py-5">
+    <div class="contact-card row no-gutters">
+      <div
+        class="col-lg-5 contact-hero d-flex flex-column justify-content-center"
+      >
+        <div class="px-4 py-3">
+          <h5 class="text-uppercase text-muted small">Get in touch</h5>
+          <h2 class="mb-3">YOU CAN CONTACT TO US</h2>
+          <p class="text-muted">
+            Questions, feedback, or a project idea? Can i halp you ?
+          </p>
+
+          <div class="mt-4">
+            <div class="info-item d-flex align-items-start mb-3">
+              <i class="fas fa-map-marker-alt text-primary mr-2"></i>
+              <div>
+                <div class="font-weight-bold">Address</div>
+                <div class="text-muted">
+                  Location: Sangkat Tik tla, Khan Sen sok,Phnom Penh, Cambodia
+                </div>
+              </div>
+            </div>
+
+            <div class="info-item d-flex align-items-start mb-3">
+              <i class="fas fa-phone-alt text-primary mr-2"></i>
+              <div>
+                <div class="font-weight-bold">Phone</div>
+                <div class="text-muted">+855 71 330 5991</div>
+              </div>
+            </div>
+
+            <div class="info-item d-flex align-items-start">
+              <i class="fas fa-envelope text-primary mr-2"></i>
+              <div>
+                <div class="font-weight-bold">Email</div>
+                <div class="text-muted">NangExtrashop.com</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-7 bg-white p-4 p-lg-5">
+        <div class="px-2" style="color: green">
+          <h5 class="text-muted">CONTACT FORM</h5>
+
+          <div id="alertPlaceholder"></div>
+
+          <form id="contactForm" novalidate>
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label for="name">Full name</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="name"
+                  placeholder="Your name"
+                  required
+                />
+                <div class="invalid-feedback">Please enter your name.</div>
+              </div>
+              <div class="form-group col-md-6">
+                <label for="phone">Phone</label>
+                <input
+                  type="tel"
+                  class="form-control"
+                  id="phone"
+                  placeholder="number"
+                  required
+                />
+                <div class="invalid-feedback">Please enter a phone number.</div>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label for="email">Email</label>
+                <input
+                  type="email"
+                  class="form-control"
+                  id="email"
+                  placeholder="you@example.com"
+                  required
+                />
+                <div class="invalid-feedback">
+                  Please provide a valid email.
+                </div>
+              </div>
+              <div class="form-group col-md-6">
+                <label for="subject">Subject</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="subject"
+                  placeholder="Subject"
+                  required
+                />
+                <div class="invalid-feedback">Please add a subject.</div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="message">Message</label>
+              <textarea
+                class="form-control"
+                id="message"
+                rows="5"
+                placeholder="Write your message..."
+                required
+              ></textarea>
+              <div class="invalid-feedback">Message can't be empty.</div>
+            </div>
+
+            <div class="d-flex align-items-center">
+              <button type="submit" class="btn btn-accent mr-3">
+                <i class="fas fa-paper-plane mr-2"></i>Send message
+              </button>
+              <small class="text-muted"
+                >Or
+                <a href="mailto:hello@example.com">email us directly</a></small
+              >
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+  <script>
+    (function () {
+      "use strict";
+      var form = document.getElementById("contactForm");
+      var alertPlaceholder = document.getElementById("alertPlaceholder");
+
+      form.addEventListener(
+        "submit",
+        function (e) {
+          e.preventDefault();
+          e.stopPropagation();
+
+          if (form.checkValidity() === false) {
+            form.classList.add("was-validated");
+            return;
+          }
+
+          var name = document.getElementById("name").value;
+          alertPlaceholder.innerHTML =
+            '<div class="alert alert-success" role="alert">Thanks, <strong>' +
+            escapeHtml(name) +
+            "</strong> — your message has been sent.</div>";
+          form.reset();
+          form.classList.remove("was-validated");
+
+          function escapeHtml(text) {
+            return text.replace(/[&<>"']/g, function (m) {
+              return {
+                "&": "&amp;",
+                "<": "&lt;",
+                ">": "&gt;",
+                '"': "&quot;",
+                "'": "&#39;",
+              }[m];
+            });
+          }
+        },
+        false
+      );
+    })();
+  </script>
+</body>
