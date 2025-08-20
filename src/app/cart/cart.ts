@@ -36,7 +36,6 @@ export class Cart {
     }
   }
 
-  // Close invoice popup
   closeInvoice() {
     this.showInvoice = false;
   }

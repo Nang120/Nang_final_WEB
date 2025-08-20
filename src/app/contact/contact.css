@@ -3,7 +3,7 @@
   --muted: #6b7280;
 }
 body {
-  background: linear-gradient(180deg, #f8fafc 0%, #ffffff 60%);
+  background-color: white;
   color: #000000;
 }
 .contact-card {

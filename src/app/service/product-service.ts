@@ -3,7 +3,7 @@ declare var axios: any;
 declare var $: any;
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ProductService {
   private product: any[] = [];
@@ -12,39 +12,33 @@ export class ProductService {
   }
   constructor() {
     let ng_This = this;
-    $.LoadingOverlay("show");
-    axios.get('https://fakestoreapi.com/products')
+    $.LoadingOverlay('show');
+    axios
+      .get('https://fakestoreapi.com/products')
       .then(function (response: any) {
-        // handle success
         ng_This.product = response.data;
-        $.LoadingOverlay("hide");
+        $.LoadingOverlay('hide');
         console.log(response);
       })
       .catch(function (error: any) {
-        // handle error
         console.log(error);
       })
-      .finally(function () {
-        // always executed
-      });
+      .finally(function () {});
 
-    // Optionally the request above could also be done as
-    axios.get('/user', {
-      params: {
-        ID: 12345
-      }
-    })
+    axios
+      .get('/user', {
+        params: {
+          ID: 12345,
+        },
+      })
       .then(function (response: any) {
         console.log(response);
       })
       .catch(function (error: any) {
         console.log(error);
       })
-      .finally(function () {
-        // always executed
-      });
+      .finally(function () {});
 
-    // Want to use async/await? Add the `async` keyword to your outer function/method.
     async function getUser() {
       try {
         const response = await axios.get('/user?ID=12345');
